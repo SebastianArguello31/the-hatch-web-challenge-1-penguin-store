@@ -1,0 +1,22 @@
+//- Estructura HTML compartida: metadatos, navegación, contenido y pie de página.
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title #{title} | Penguin Admin
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    header.navbar
+      a.brand(href="/admin") Penguin Admin
+      if adminEmail
+        nav
+          a(href="/admin/products") Productos
+          a(href="/admin/orders") Pedidos
+          //- Envía los campos al servidor; la vista puede volver a mostrarse con errores de validación.
+          form.inline-form(action="/logout" method="POST")
+            button.btn-link(type="submit") Salir (#{adminEmail})
+    main.container
+      block content
+    footer.footer
+      p Penguin Store · Panel de administración

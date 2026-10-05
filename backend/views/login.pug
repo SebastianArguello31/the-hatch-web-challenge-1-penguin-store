@@ -1,0 +1,17 @@
+//- Formulario de acceso y mensaje de error cuando las credenciales no son válidas.
+extends layout
+
+block content
+  .login-box
+    h1 Iniciar sesión
+    if error
+      p.alert= error
+    //- Envía los campos al servidor; la vista puede volver a mostrarse con errores de validación.
+    form.form(action="/login" method="POST")
+      label(for="email") Email
+      input#email(type="email" name="email" value=email required)
+
+      label(for="password") Contraseña
+      input#password(type="password" name="password" required)
+
+      button.btn(type="submit") Entrar
