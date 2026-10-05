@@ -1,0 +1,33 @@
+//- Recorre los registros recibidos y presenta sus datos y acciones disponibles.
+extends ../layout
+
+block content
+  h1 Pedidos
+
+  if orders.length === 0
+    p.empty Todavía no hay pedidos.
+  else
+    .table-wrapper
+      table
+        thead
+          tr
+            th Fecha
+            th Cliente
+            th Dirección
+            th Productos
+            th Total
+            th
+        tbody
+          //- Genera un bloque por cada registro recibido del controlador.
+          each order in orders
+            tr
+              td= order.createdAt.toLocaleString("es-PY")
+              td= order.customerName
+              td= order.address
+              td
+                //- Genera un bloque por cada registro recibido del controlador.
+                each item in order.items
+                  div #{item.name} × #{item.quantity}
+              td #{formatPrice(order.total)}
+              td
+                a.btn.btn-small(href=`/admin/orders/${order._id}`) Ver
