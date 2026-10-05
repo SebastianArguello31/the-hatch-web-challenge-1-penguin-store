@@ -1,0 +1,26 @@
+//- Formulario reutilizado al crear y editar productos; recibe valores, errores y destino desde el controlador.
+//- Envía los campos al servidor; la vista puede volver a mostrarse con errores de validación.
+form.form(action=formAction method="POST")
+  if errors && errors.length > 0
+    ul.alert
+      each err in errors
+        li= err
+
+  label(for="name") Nombre *
+  input#name(type="text" name="name" value=product.name)
+
+  label(for="description") Descripción
+  textarea#description(name="description" rows="4")= product.description
+
+  label(for="price") Precio (₲, sin decimales) *
+  input#price(type="number" name="price" min="1" step="1" required value=product.price)
+
+  label(for="stock") Stock *
+  input#stock(type="number" name="stock" step="1" value=product.stock)
+
+  label(for="category") Categoría
+  input#category(type="text" name="category" value=product.category)
+
+  .form-actions
+    button.btn(type="submit")= buttonText
+    a.btn.btn-secondary(href="/admin/products") Cancelar

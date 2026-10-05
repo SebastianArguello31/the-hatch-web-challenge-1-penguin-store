@@ -1,0 +1,33 @@
+//- Recorre los registros recibidos y presenta sus datos y acciones disponibles.
+extends ../layout
+
+block content
+  .page-header
+    h1 Productos
+    a.btn(href="/admin/products/new") + Nuevo producto
+
+  if products.length === 0
+    p.empty Todavía no hay productos. ¡Crea el primero!
+  else
+    .table-wrapper
+      table
+        thead
+          tr
+            th Nombre
+            th Categoría
+            th Precio
+            th Stock
+            th Acciones
+        tbody
+          //- Genera un bloque por cada registro recibido del controlador.
+          each product in products
+            tr
+              td= product.name
+              td= product.category || "-"
+              td #{formatPrice(product.price)}
+              td= product.stock
+              td.actions-cell
+                a.btn.btn-small(href=`/admin/products/${product._id}/edit`) Editar
+                //- Envía los campos al servidor; la vista puede volver a mostrarse con errores de validación.
+                form.inline-form(action=`/admin/products/${product._id}?_method=DELETE` method="POST")
+                  button.btn.btn-small.btn-danger(type="submit") Eliminar
