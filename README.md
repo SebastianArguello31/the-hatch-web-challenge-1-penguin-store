@@ -8,7 +8,7 @@ Las páginas se renderizan en el servidor con Pug. La navegación y los formular
 
 ### Tienda pública
 
-- Catálogo con nombre, descripción, categoría, precio y stock.
+- Catálogo con imagen opcional, nombre, descripción, categoría, precio y stock.
 - Página de detalle de cada producto e indicación de productos agotados.
 - Compra de un producto por pedido, con la cantidad elegida por el cliente.
 - Formulario con nombre del cliente y dirección de entrega.
@@ -52,25 +52,66 @@ Ambas aplicaciones acceden directamente a MongoDB mediante Mongoose. La tienda n
 the-hatch-web-challenge-1-penguin-store/
 ├── backend/
 │   ├── controllers/
-│   ├── middleware/requireAuth.js
-│   ├── models/                 # Admin
-│   ├── public/css/style.css
+│   │   ├── authController.js
+│   │   ├── dashboardController.js
+│   │   ├── orderController.js
+│   │   └── productController.js
+│   ├── middleware/
+│   │   └── requireAuth.js
+│   ├── models/
+│   │   └── Admin.js
+│   ├── public/
+│   │   └── css/
+│   │       └── style.css
 │   ├── routes/
-│   ├── scripts/createAdmin.js
+│   │   ├── auth.js
+│   │   ├── dashboard.js
+│   │   ├── orders.js
+│   │   └── products.js
+│   ├── scripts/
+│   │   └── createAdmin.js
 │   ├── views/
+│   │   ├── orders/
+│   │   │   ├── index.pug
+│   │   │   └── show.pug
+│   │   ├── products/
+│   │   │   ├── _form.pug
+│   │   │   ├── edit.pug
+│   │   │   ├── index.pug
+│   │   │   └── new.pug
+│   │   ├── dashboard.pug
+│   │   ├── layout.pug
+│   │   └── login.pug
 │   └── app.js
 ├── frontend/
 │   ├── controllers/
-│   ├── public/css/style.css
+│   │   ├── orderController.js
+│   │   └── productController.js
+│   ├── public/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   └── images/
 │   ├── routes/
+│   │   ├── orders.js
+│   │   └── products.js
 │   ├── views/
+│   │   ├── orders/
+│   │   │   ├── new.pug
+│   │   │   └── success.pug
+│   │   ├── products/
+│   │   │   └── show.pug
+│   │   ├── index.pug
+│   │   └── layout.pug
 │   └── app.js
 ├── shared/
 │   ├── config/
 │   │   ├── db.js
 │   │   └── env.js
-│   ├── models/                 # Product y Order
-│   └── utils/formatPrice.js
+│   ├── models/
+│   │   ├── Order.js
+│   │   └── Product.js
+│   └── utils/
+│       └── formatPrice.js
 ├── .env.example
 ├── .gitignore
 ├── package-lock.json
@@ -205,7 +246,7 @@ Todas las rutas bajo `/admin` requieren una sesión autenticada. Los formularios
 ## Datos y reglas de negocio
 
 - **Administrador (`Admin`):** correo único normalizado y contraseña hasheada.
-- **Producto (`Product`):** nombre, descripción, precio, stock, categoría y fecha de creación.
+- **Producto (`Product`):** nombre, descripción, ruta de imagen opcional, precio, stock, categoría y fecha de creación.
 - **Pedido (`Order`):** nombre del cliente, dirección, artículos, total y fecha de creación.
 
 Cada artículo del pedido conserva una copia del nombre y del precio del producto al comprarlo. Modificar o eliminar el producto después no modifica esos datos históricos.
