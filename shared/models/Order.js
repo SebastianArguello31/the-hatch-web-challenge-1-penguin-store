@@ -1,4 +1,4 @@
-// Tienda pública. Esquema de pedidos: conserva los datos del cliente, los artículos y el importe de la compra.
+// Esquema compartido de pedidos: datos del cliente, artículos e importe de la compra.
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({

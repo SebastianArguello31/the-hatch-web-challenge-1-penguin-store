@@ -1,14 +1,14 @@
 // Panel de administración. Configura Express, las vistas, los middleware y las rutas. Inicia el servidor después de conectar a MongoDB.
 const path = require("path");
 // Carga el .env compartido de la raíz, independientemente de la carpeta de ejecución.
-require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
+require("../shared/config/env");
 
 const express = require("express");
 const session = require("express-session");
 const { MongoStore } = require("connect-mongo");
 const methodOverride = require("method-override");
 
-const connectDB = require("./config/db");
+const connectDB = require("../shared/config/db");
 const requireAuth = require("./middleware/requireAuth");
 
 const authRoutes = require("./routes/auth");
@@ -23,7 +23,7 @@ if (!process.env.SESSION_SECRET) {
 
 const app = express();
 // Permite usar formatPrice en cualquier plantilla Pug.
-app.locals.formatPrice = require("./utils/formatPrice");
+app.locals.formatPrice = require("../shared/utils/formatPrice");
 // Lee el puerto propio de la aplicación y usa el valor predeterminado si falta.
 const PORT = Number(process.env.ADMIN_PORT || 3000);
 

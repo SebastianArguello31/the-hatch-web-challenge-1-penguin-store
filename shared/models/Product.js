@@ -1,4 +1,4 @@
-// Tienda pública. Esquema de productos: datos descriptivos, precio entero en guaraníes y stock disponible.
+// Esquema compartido de productos: datos descriptivos, precio entero en guaraníes y stock disponible.
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({

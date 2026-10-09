@@ -1,6 +1,6 @@
 // Tienda pública. Procesa las solicitudes de productos y prepara los datos para las vistas.
 const mongoose = require("mongoose");
-const Product = require("../models/Product");
+const Product = require("../../shared/models/Product");
 
 // GET / y GET /products → lista de productos
 exports.index = async (req, res) => {

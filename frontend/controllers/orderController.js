@@ -1,7 +1,7 @@
 // Tienda pública. Procesa las solicitudes de pedidos y prepara los datos para las vistas.
 const mongoose = require("mongoose");
-const Product = require("../models/Product");
-const Order = require("../models/Order");
+const Product = require("../../shared/models/Product");
+const Order = require("../../shared/models/Order");
 
 // GET /orders/new/:productId → formulario de pedido
 exports.newForm = async (req, res) => {

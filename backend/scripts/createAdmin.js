@@ -1,7 +1,6 @@
 // Panel de administración. Crea el administrador usando el .env de la raíz; conserva las cuentas que ya existen.
-const path = require("path");
 // Carga el .env compartido de la raíz, independientemente de la carpeta de ejecución.
-require("dotenv").config({ path: path.join(__dirname, "..", "..", ".env") });
+require("../../shared/config/env");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Admin = require("../models/Admin");

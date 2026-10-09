@@ -1,6 +1,6 @@
 // Panel de administración. Consulta los totales que se muestran en el resumen del panel.
-const Product = require("../models/Product");
-const Order = require("../models/Order");
+const Product = require("../../shared/models/Product");
+const Order = require("../../shared/models/Order");
 
 // GET /admin
 exports.index = async (req, res) => {

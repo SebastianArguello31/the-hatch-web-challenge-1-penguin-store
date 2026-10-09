@@ -1,17 +1,17 @@
 // Tienda pública. Configura Express, las vistas, los middleware y las rutas. Inicia el servidor después de conectar a MongoDB.
 const path = require("path");
 // Carga el .env compartido de la raíz, independientemente de la carpeta de ejecución.
-require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
+require("../shared/config/env");
 
 const express = require("express");
 
-const connectDB = require("./config/db");
+const connectDB = require("../shared/config/db");
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
 
 const app = express();
 // Permite usar formatPrice en cualquier plantilla Pug.
-app.locals.formatPrice = require("./utils/formatPrice");
+app.locals.formatPrice = require("../shared/utils/formatPrice");
 // Lee el puerto propio de la aplicación y usa el valor predeterminado si falta.
 const PORT = Number(process.env.STORE_PORT || 4000);
 

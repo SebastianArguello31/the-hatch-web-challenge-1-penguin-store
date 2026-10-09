@@ -1,6 +1,6 @@
 // Panel de administración. Procesa las solicitudes de pedidos y prepara los datos para las vistas.
 const mongoose = require("mongoose");
-const Order = require("../models/Order");
+const Order = require("../../shared/models/Order");
 
 // GET /admin/orders
 exports.index = async (req, res) => {

@@ -46,30 +46,31 @@ El proyecto utiliza dos procesos independientes que comparten la misma base de d
 - `backend/`: aplicación del panel administrativo, en el puerto `3000` por defecto.
 - `frontend/`: aplicación de la tienda pública, en el puerto `4000` por defecto. También es un servidor Express.
 
-Ambas aplicaciones acceden directamente a MongoDB mediante Mongoose. La tienda no consume una API del panel: cada servidor tiene sus propias rutas, controladores, modelos y vistas. Los modelos `Product` y `Order` están definidos en ambas aplicaciones y deben mantenerse compatibles.
+Ambas aplicaciones acceden directamente a MongoDB mediante Mongoose. La tienda no consume una API del panel: cada servidor tiene sus propias rutas, controladores y vistas. La carpeta `shared/` centraliza los modelos `Product` y `Order`, el formato de precios, la conexión a MongoDB y la carga del `.env` de la raíz. El modelo `Admin` permanece en `backend/` porque solo pertenece al panel. Cada servidor mantiene su propia conexión a MongoDB y utiliza las mismas definiciones de datos.
 
 ```text
 the-hatch-web-challenge-1-penguin-store/
 ├── backend/
-│   ├── config/db.js
 │   ├── controllers/
 │   ├── middleware/requireAuth.js
-│   ├── models/                 # Admin, Product y Order
+│   ├── models/                 # Admin
 │   ├── public/css/style.css
 │   ├── routes/
 │   ├── scripts/createAdmin.js
-│   ├── utils/formatPrice.js
 │   ├── views/
 │   └── app.js
 ├── frontend/
-│   ├── config/db.js
 │   ├── controllers/
-│   ├── models/                 # Product y Order
 │   ├── public/css/style.css
 │   ├── routes/
-│   ├── utils/formatPrice.js
 │   ├── views/
 │   └── app.js
+├── shared/
+│   ├── config/
+│   │   ├── db.js
+│   │   └── env.js
+│   ├── models/                 # Product y Order
+│   └── utils/formatPrice.js
 ├── .env.example
 ├── .gitignore
 ├── package-lock.json

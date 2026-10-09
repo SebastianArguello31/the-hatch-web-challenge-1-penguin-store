@@ -1,4 +1,4 @@
-// Tienda pública. Conecta la aplicación a MongoDB mediante MONGODB_URI y detiene el arranque si la conexión falla.
+// Conecta las aplicaciones a MongoDB y detiene el arranque si la conexión falla.
 const mongoose = require("mongoose");
 
 // La función es asíncrona para esperar la conexión antes de aceptar solicitudes.
