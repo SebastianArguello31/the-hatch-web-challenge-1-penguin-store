@@ -6,6 +6,9 @@ form.form(action=formAction method="POST")
       each err in errors
         li= err
 
+  label(for="image") Ruta de la imagen
+  input#image(type="text" name="image" value=product.image placeholder="/images/producto.jpg")
+
   label(for="name") Nombre *
   input#name(type="text" name="name" value=product.name)
 

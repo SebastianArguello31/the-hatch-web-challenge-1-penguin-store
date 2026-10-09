@@ -11,6 +11,8 @@ block content
       //- Genera un bloque por cada registro recibido del controlador.
       each product in products
         article.product-card
+          if product.image
+            img.product-image(src=product.image alt=product.name loading="lazy")
           .product-info
             h2= product.name
             if product.category

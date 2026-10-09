@@ -32,6 +32,7 @@ function validateProduct(body) {
 // Arma el objeto que vamos a guardar en MongoDB
 function buildProductData(body) {
     return {
+        image: String(body.image || "").trim(),
         name: String(body.name || "").trim(),
         description: String(body.description || "").trim(),
         price: Number(body.price),
