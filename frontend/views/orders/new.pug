@@ -1,0 +1,32 @@
+//- Formulario para registrar un producto o realizar un pedido, según el controlador que lo renderiza.
+extends ../layout
+
+block content
+  a.back-link(href=`/products/${product._id}`) ← Volver al producto
+
+  h1 Hacer pedido
+
+  .order-summary
+    p
+      strong= product.name
+    p Precio: #{formatPrice(product.price)} · Stock disponible: #{product.stock}
+
+  //- Envía los campos al servidor; la vista puede volver a mostrarse con errores de validación.
+  form.form(action="/orders" method="POST")
+    if errors && errors.length > 0
+      ul.alert
+        each err in errors
+          li= err
+
+    input(type="hidden" name="productId" value=product._id)
+
+    label(for="customerName") Tu nombre
+    input#customerName(type="text" name="customerName" value=values.customerName)
+
+    label(for="address") Dirección de entrega
+    input#address(type="text" name="address" value=values.address)
+
+    label(for="quantity") Cantidad
+    input#quantity(type="number" name="quantity" step="1" value=values.quantity)
+
+    button.btn(type="submit") Confirmar pedido

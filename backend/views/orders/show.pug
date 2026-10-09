@@ -1,0 +1,41 @@
+//- Muestra el detalle del registro recibido del controlador.
+extends ../layout
+
+block content
+  .page-header
+    h1 Pedido
+    a.btn.btn-secondary(href="/admin/orders") ← Volver a pedidos
+
+  .detail-box
+    p
+      strong Fecha:
+      |  #{order.createdAt.toLocaleString("es-PY")}
+    p
+      strong Cliente:
+      |  #{order.customerName}
+    p
+      strong Dirección:
+      |  #{order.address}
+    p
+      strong ID del pedido:
+      |  #{order._id}
+
+  h2 Productos
+  .table-wrapper
+    table
+      thead
+        tr
+          th Producto
+          th Precio unitario
+          th Cantidad
+          th Subtotal
+      tbody
+        //- Genera un bloque por cada registro recibido del controlador.
+        each item in order.items
+          tr
+            td= item.name
+            td #{formatPrice(item.price)}
+            td= item.quantity
+            td #{formatPrice(item.price * item.quantity)}
+
+  p.total Total: #{formatPrice(order.total)}

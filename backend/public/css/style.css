@@ -1,0 +1,284 @@
+/* Estilos de administración. Las clases corresponden a los elementos de las vistas Pug. */
+/* Incluye padding y bordes en el tamaño declarado de cada elemento. */
+* {
+    box-sizing: border-box;
+}
+
+/* Define la tipografía, el fondo y los colores generales. */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #f4f7fb;
+    color: #1f2a44;
+    line-height: 1.5;
+}
+
+a {
+    color: #1d4ed8;
+}
+
+/* ---------- Barra superior ---------- */
+.navbar {
+    background: #1f2a44;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* ---------- Contenedor ---------- */
+/* Centra el contenido y limita su ancho para facilitar la lectura. */
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 60vh;
+}
+
+.footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-block;
+    background: #f59e0b;
+    color: #1f2a44;
+    border: none;
+    padding: 0.6rem 1.1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #d98a06;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #1f2a44;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+.btn-small {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.inline-form {
+    display: inline;
+    margin: 0;
+}
+
+/* ---------- Formularios ---------- */
+.form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    max-width: 520px;
+}
+
+.form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 0.55rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form input:focus,
+.form textarea:focus {
+    outline: 2px solid #f59e0b;
+    border-color: transparent;
+}
+
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.form > .btn {
+    margin-top: 1.5rem;
+}
+
+.login-box {
+    max-width: 380px;
+    margin: 3rem auto;
+}
+
+/* ---------- Mensajes ---------- */
+/* Destaca los mensajes de validación enviados por el servidor. */
+.alert {
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin: 0 0 1rem 0;
+}
+
+ul.alert {
+    padding-left: 2rem;
+}
+
+.empty {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #6b7280;
+}
+
+/* ---------- Tarjetas del dashboard ---------- */
+.cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem 2rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 160px;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: #f59e0b;
+}
+
+.card p {
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/* ---------- Tablas ---------- */
+/* Permite desplazar tablas horizontalmente en pantallas pequeñas. */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: top;
+}
+
+th {
+    background: #eef2f7;
+    font-size: 0.9rem;
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+/* ---------- Detalle de pedido ---------- */
+.detail-box {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.detail-box p {
+    margin: 0.4rem 0;
+}
+
+/* Destaca el importe final del pedido. */
+.total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: right;
+}

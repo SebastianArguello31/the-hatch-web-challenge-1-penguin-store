@@ -1,0 +1,29 @@
+//- Recorre los registros recibidos y presenta sus datos y acciones disponibles.
+extends layout
+
+block content
+  h1 Nuestros productos
+
+  if products.length === 0
+    p.empty Todavía no hay productos disponibles.
+  else
+    .grid
+      //- Genera un bloque por cada registro recibido del controlador.
+      each product in products
+        article.product-card
+          if product.image
+            img.product-image(src=product.image alt=product.name loading="lazy")
+          .product-info
+            h2= product.name
+            if product.category
+              p.category= product.category
+            p.description= product.description
+            p.price #{formatPrice(product.price)}
+            if product.stock > 0
+              p.stock Stock: #{product.stock}
+            else
+              p.stock.out-of-stock Agotado
+            .card-actions
+              a.btn.btn-secondary(href=`/products/${product._id}`) Ver
+              if product.stock > 0
+                a.btn(href=`/orders/new/${product._id}`) Comprar

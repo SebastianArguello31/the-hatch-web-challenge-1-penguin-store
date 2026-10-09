@@ -1,0 +1,264 @@
+/* Estilos de la tienda. Las clases corresponden a los elementos de las vistas Pug. */
+/* Incluye padding y bordes en el tamaño declarado de cada elemento. */
+* {
+    box-sizing: border-box;
+}
+
+/* Define la tipografía, el fondo y los colores generales. */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #eef6ff;
+    color: #1f2a44;
+    line-height: 1.5;
+}
+
+a {
+    color: #1d4ed8;
+}
+
+/* ---------- Barra superior ---------- */
+.navbar {
+    background: #0f3057;
+    color: white;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+/* ---------- Contenedor ---------- */
+/* Centra el contenido y limita su ancho para facilitar la lectura. */
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 60vh;
+}
+
+.footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    padding: 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-block;
+    background: #f59e0b;
+    color: #1f2a44;
+    border: none;
+    padding: 0.6rem 1.1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #d98a06;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+/* ---------- Listado de productos ---------- */
+/* Organiza los productos en columnas adaptables al espacio disponible. */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-info h2 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.15rem;
+}
+
+.category {
+    color: #6b7280;
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.description {
+    flex: 1;
+    margin: 0 0 0.75rem 0;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0f3057;
+    margin: 0;
+}
+
+.stock {
+    color: #15803d;
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0.75rem 0;
+}
+
+.out-of-stock {
+    color: #b91c1c;
+    font-weight: bold;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ---------- Detalle de producto ---------- */
+.product-detail {
+    display: flex;
+    gap: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.12);
+    flex-wrap: wrap;
+}
+
+.detail-info {
+    flex: 1;
+    min-width: 260px;
+}
+
+.detail-info h1 {
+    margin-top: 0;
+}
+
+/* ---------- Formulario de pedido ---------- */
+.order-summary {
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    max-width: 520px;
+    margin-bottom: 1rem;
+}
+
+.order-summary p {
+    margin: 0.3rem 0;
+}
+
+.form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    max-width: 520px;
+}
+
+.form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.form input[type="text"],
+.form input[type="number"] {
+    width: 100%;
+    padding: 0.55rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form input:focus {
+    outline: 2px solid #f59e0b;
+    border-color: transparent;
+}
+
+.form .btn {
+    margin-top: 1.5rem;
+}
+
+/* Destaca los mensajes de validación enviados por el servidor. */
+.alert {
+    background: #fee2e2;
+    color: #991b1b;
+    border-radius: 6px;
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    margin: 0 0 1rem 0;
+}
+
+.empty {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #6b7280;
+}
+
+/* ---------- Confirmación ---------- */
+.success-box {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.success-box .order-summary {
+    text-align: left;
+    margin: 1rem auto;
+}
+
+/* Destaca el importe final del pedido. */
+.total {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.product-detail .product-image {
+    height: 360px;
+}

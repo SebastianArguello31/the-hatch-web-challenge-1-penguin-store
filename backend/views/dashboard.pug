@@ -1,0 +1,18 @@
+//- Muestra los contadores de productos y pedidos enviados por el controlador.
+extends layout
+
+block content
+  h1 Dashboard
+  p Bienvenido al panel de administración de la tienda.
+
+  .cards
+    .card
+      h2= totalProducts
+      p Productos
+    .card
+      h2= totalOrders
+      p Pedidos
+
+  .actions
+    a.btn(href="/admin/products/new") + Nuevo producto
+    a.btn.btn-secondary(href="/admin/orders") Ver pedidos

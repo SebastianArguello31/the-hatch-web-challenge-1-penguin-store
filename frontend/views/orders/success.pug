@@ -1,0 +1,26 @@
+//- Muestra los datos del pedido guardado y un enlace para volver al catálogo.
+extends ../layout
+
+block content
+  .success-box
+    h1  ¡Pedido confirmado!
+    p Gracias, <strong>#{order.customerName}</strong>. Recibimos tu pedido.
+
+    .order-summary
+      p
+        strong Número de pedido:
+        |  #{order._id}
+      p
+        strong Dirección de entrega:
+        |  #{order.address}
+      p
+        strong Fecha:
+        |  #{order.createdAt.toLocaleString("es-PY")}
+
+      //- Genera un bloque por cada registro recibido del controlador.
+      each item in order.items
+        p #{item.name} × #{item.quantity} — #{formatPrice(item.price * item.quantity)}
+
+      p.total Total: #{formatPrice(order.total)}
+
+    a.btn(href="/") Seguir comprando

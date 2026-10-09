@@ -1,0 +1,20 @@
+//- Muestra el detalle del registro recibido del controlador.
+extends ../layout
+
+block content
+  a.back-link(href="/") ← Volver a productos
+
+  .product-detail
+    if product.image
+      img.product-image(src=product.image alt=product.name)
+    .detail-info
+      h1= product.name
+      if product.category
+        p.category= product.category
+      p.description= product.description
+      p.price #{formatPrice(product.price)}
+      if product.stock > 0
+        p.stock Stock disponible: #{product.stock}
+        a.btn(href=`/orders/new/${product._id}`) Comprar
+      else
+        p.stock.out-of-stock Agotado
